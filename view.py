@@ -27,6 +27,7 @@ while True:
             print('Digite valores valídos.')
 
 
+
     if decisao == 'l':
         ...
 
