@@ -1,6 +1,6 @@
 # view fica com a interface grafica
 
-
+from dal import ProdutosDal
 from controller import ProdutosController
 
 
@@ -16,23 +16,21 @@ while True:
         break
 
 
-    if decisao == 'i':
-        produto = input('Nome do Produto: ').upper()
+    elif decisao == 'i':
+        nome = input('Nome do Produto: ').upper()
         quantidade = input('Quantidade do Produto: ' )
         validade = input('Difigite a validade do produto: ').replace('/', '')
-
-        if ProdutosController.cadastrar_produto(produto, quantidade, validade):
-            print('Produto cadastrado com sucesso!')
-        else:
-            print('Digite valores valídos.')
+        ProdutosController.cadastrar_produto(nome=nome, quantidade=quantidade, validade=validade)
 
 
 
-    if decisao == 'l':
-        ...
+    elif decisao == 'l':
+        mostrar = ProdutosDal.ler()
+        for i in mostrar:
+            print(i, end=(''))
 
 
-    if decisao == 'a':
+    elif decisao == 'a':
         ...
 
         

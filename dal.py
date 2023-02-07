@@ -8,12 +8,24 @@ class ProdutosDal:
     @classmethod             # método de uma classe que pode ser chamado diretamente, sem ser instânciado. ele  recebe o parametro cls
     def salvar(cls, produto: Produto):
         with open('produtos.txt', 'a') as arq:
-            arq.write(produto.produto + ' ' + produto.quantidade + ' ' + produto.validade + '\n')
+            arq.writelines(produto.nome + ' ' + produto.quantidade + ' ' + produto.validade)
+            arq.writelines('\n')
 
 
 
     @classmethod
-    def ler(cls, produto: Produto):
-        with open('produto.txt', 'r') as arq:
-            arq.writelines()
+    def ler(cls):
+        with open('produtos.txt', 'r') as arq:
+            cls.nome = arq.readlines()
+
+        
+        produtos = []
+
+
+        if len(cls.nome) > 0:
+            for i in cls.nome:
+                produtos.append(i)
+
+        return produtos
+
         
